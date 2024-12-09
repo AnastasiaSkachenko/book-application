@@ -1,40 +1,38 @@
-<div class="h-screen flex items-center justify-center">
-  <form class="shadow-md rounded-md p-5 bg-white w-1/6" [formGroup]="form" (ngSubmit)="login()">
-    <div class="py-4">
-      <h1 class="font-bold py-2">
+<div class="d-flex align-items-center justify-content-center vh-100">
+  <form class="shadow-sm rounded p-4 bg-white w-25" [formGroup]="form" (ngSubmit)="login()">
+    <div class="py-4 text-center">
+      <h1 class="font-weight-bold py-2">
         Login
       </h1>
-      <h6 class="text-slate-600 text-base">
+      <h6 class="text-muted">
         Login to your account
       </h6>
     </div>
 
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" class="form-control" type="email" placeholder="Email" formControlName="email" />
+    </div>
 
-    <mat-form-field apperance="fill" class="w-full">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Email" formControlName="email" />
-      <mat-icon matPrefix>email</mat-icon>
-    </mat-form-field>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <div class="input-group">
+        <input id="password" class="form-control" type="{{ hide ? 'password' : 'text'}}" formControlName="password" placeholder="Password" />
+        <button class="btn btn-outline-secondary" type="button" (click)="hide = !hide">
+          {{ hide ? 'Show' : 'Hide'}}
+        </button>
+      </div>
+    </div>
 
-    <mat-form-field appearance="fill" class="w-full">
-      <mat-label>Password</mat-label>
-      <input matInput type="{{ hide ? 'password' : 'text'}}" formControlName="password" placeholder="Password" />
-      <mat-icon matPrefix>lock</mat-icon>
-      <mat-icon (click)="hide = !hide" matSuffix>
-        {{ hide ? 'visibility_off':'visibility'}}
-      </mat-icon>
-    </mat-form-field>
-
-    <button type="submit" [disabled]="!form.valid"
-      class="w-full border border-slate-200 rounded-md disabled:bg-purple-400 py-2 px-3 bg-purple-700 text-white font-bold">
+    <button type="submit" [disabled]="!form.valid" class="w-100 btn btn-primary font-weight-bold">
       Login
     </button>
 
-    <div class="my-5">
-      <span class="text-slate-600">
+    <div class="mt-4 text-center">
+      <span class="text-muted">
         Don't have an account?
       </span>
-      <a class="text-purple-700" [routerLink]="['/register']">Register</a>
+      <a class="text-primary" [routerLink]="['/register']">Register</a>
     </div>
   </form>
 </div>

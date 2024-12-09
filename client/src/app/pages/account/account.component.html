@@ -1,0 +1,29 @@
+<div class="d-flex align-items-center vh-100">
+  <div class="container my-4 p-4 bg-white shadow rounded" style="max-width: 500px;">
+    <h1 class="h3 text-secondary text-center fw-bold mb-4">Account Detail</h1>
+    <div *ngIf="accountDetail$ | async as user">
+      <div class="text-center">
+        <!-- User's Initial -->
+        <div class="rounded-circle bg-primary text-white mb-4 d-inline-flex justify-content-center align-items-center"
+             style="width: 6rem; height: 6rem; font-size: 2rem;">
+          {{ user.fullName[0] | uppercase }}
+        </div>
+        <hr class="mb-4">
+        <!-- Account Details -->
+        <div class="row g-2 text-start">
+          <div class="col-6 fw-bold text-secondary">Full Name</div>
+          <div class="col-6 text-dark">{{ user.fullName | titlecase }}</div>
+
+          <div class="col-6 fw-bold text-secondary">Email</div>
+          <div class="col-6 text-dark">{{ user.email }}</div>
+
+          <div class="col-6 fw-bold text-secondary">Phone</div>
+          <div class="col-6 text-dark">{{ user.phoneNumber || '-' }}</div>
+
+          <div class="col-6 fw-bold text-secondary">Access Failed Count</div>
+          <div class="col-6 text-dark">{{ user.accessFailedCount || '-' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

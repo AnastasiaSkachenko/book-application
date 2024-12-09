@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\JWT\\JwtAuth\\API\\API.csproj": {}
+    "/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/API.csproj": {}
   },
   "projects": {
-    "D:\\JWT\\JwtAuth\\API\\API.csproj": {
+    "/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\JWT\\JwtAuth\\API\\API.csproj",
+        "projectUniqueName": "/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\JWT\\JwtAuth\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\pushpa\\.nuget\\packages\\",
-        "outputPath": "D:\\JWT\\JwtAuth\\API\\obj\\",
+        "projectPath": "/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/API.csproj",
+        "packagesPath": "/Users/anastasiiaskachenko/.nuget/packages/",
+        "outputPath": "/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pushpa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/anastasiiaskachenko/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -87,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
