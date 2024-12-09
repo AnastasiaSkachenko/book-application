@@ -49,6 +49,21 @@ namespace API.Controllers
             return Ok(books);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Book>> GetBookById(int id)
+        {
+            // Fetch the book with the provided ID
+            var book = await _context.Books.FindAsync(id);
+
+            // Check if the book exists
+            if (book == null)
+            {
+                return NotFound(); // Return a 404 if the book is not found
+            }
+
+            return Ok(book); // Return the book data
+        }
+
         // Update an existing book
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook(int id, [FromBody] CreateBookDto updateBookDto)

@@ -1,0 +1,64 @@
+<div class="container d-flex justify-content-center align-items-center vh-50 main" [@fadeIn]>
+  <form class="shadow-md rounded-md p-4 bg-white w-100 " [formGroup]="addBookForm" (ngSubmit)="addBook()">
+    <!-- Displaying errors -->
+    <div *ngFor="let error of errors" class="alert alert-danger mb-2">
+      <div class="small">{{ error.description }}</div>
+    </div>
+
+    <div class="py-4">
+      <h1 class="font-weight-bold text-center py-2">Add Book</h1>
+    </div>
+
+    <!-- Book Name -->
+    <div class="my-3">
+      <label for="bookName" class="form-label">
+        <i class="fas fa-book"></i> Book Name
+      </label>
+      <input type="text" id="bookName" class="form-control" placeholder="Book name" formControlName="bookName" />
+      <div *ngIf="addBookForm.get('bookName')?.invalid && addBookForm.get('bookName')?.touched" class="text-danger">
+        <small>Book name is required</small>
+      </div>
+    </div>
+
+    <!-- Author -->
+    <div class="my-3">
+      <label for="author" class="form-label">
+        <i class="fas fa-user"></i> Author
+      </label>
+      <input type="text" id="author" class="form-control" placeholder="Author" formControlName="author" />
+      <div *ngIf="addBookForm.get('author')?.invalid && addBookForm.get('author')?.touched" class="text-danger">
+        <small>Author is required</small>
+      </div>
+    </div>
+
+    <!-- Publish Date -->
+    <div class="my-3">
+      <label for="publishDate" class="form-label">
+        <i class="fas fa-calendar-alt"></i> Publish Date
+      </label>
+      <input type="date" id="publishDate" class="form-control" formControlName="publishDate" />
+    </div>
+
+    <div class="text-center">
+      <div
+        class="button-wrapper"
+        (mouseenter)="onButtonMouseEnter()"
+        (mouseleave)="onButtonMouseLeave()">
+        <button
+          [disabled]="!addBookForm.valid"
+          class="btn btn-primary w-100"
+          type="submit">
+          <i class="fas fa-plus-circle"></i> Add Book
+        </button>
+      </div>
+
+      <div class="disabled-message" *ngIf="!addBookForm.valid && isButtonHovered">
+        Please fill in all fields to save the book.
+      </div>
+
+      <button class="btn addButton" (click)="cancel($event)" type="button">
+        <i class="fas fa-times-circle"></i> Cancel
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,39 @@
+<div class="container d-flex justify-content-center align-items-center vh-50" [@fadeIn]>
+  <form class="shadow-md rounded-md p-4 bg-white w-100" [formGroup]="editBookForm" (ngSubmit)="updateBook()">
+    <!-- Displaying errors -->
+    <div *ngFor="let error of errors" class="alert alert-danger mb-2">
+      <div class="small">{{ error.description }}</div>
+    </div>
+
+    <div class="py-4">
+      <h1 class="font-weight-bold text-center py-2">Edit Book</h1>
+    </div>
+
+    <div class="mb-3">
+      <label for="bookName" class="form-label  ">Book Name</label>
+      <input type="text" id="bookName" class="form-control" placeholder="Book name" formControlName="bookName" />
+      <div *ngIf="editBookForm.get('bookName')?.invalid && editBookForm.get('bookName')?.touched" class="text-danger">
+        <small>Book name is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <input type="text" id="author" class="form-control" placeholder="Author" formControlName="author" />
+      <div *ngIf="editBookForm.get('author')?.invalid && editBookForm.get('author')?.touched" class="text-danger">
+        <small>Author is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="publishDate" class="form-label">Publish date</label>
+      <input type="date" id="publishDate" class="form-control" formControlName="publishDate" />
+    </div>
+
+    <div class="text-center">
+      <button [disabled]="!editBookForm.valid" class="btn btn-primary w-100" type="submit">Save Changes</button>
+      <button class="btn addButton" (click)="cancel($event)" type="button">Cancel</button>
+    </div>
+
+  </form>
+</div>

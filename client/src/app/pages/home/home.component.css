@@ -1,0 +1,15 @@
+button {
+  background-color: #3f51b5;
+  color: white;
+  padding: auto;
+  font-size: 1.4em;
+
+}
+
+.red {
+  background-color: rgb(200, 0, 0);
+}
+
+li {
+  list-style: none;
+}

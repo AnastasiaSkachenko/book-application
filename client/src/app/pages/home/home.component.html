@@ -1,26 +1,43 @@
-<div class="d-flex flex-column justify-content-center align-items-center vh-100">
-  <div class="text-center">
-    <h1 class="display-4 my-4">
-      Welcome to
-      <span class="display-5 text-success">MyApp</span>
-    </h1>
+<div class="p-5">
+  <button class="btn addButton" [routerLink]="['add-book']">Lägg till ny bok</button>
 
-    <div class="d-flex flex-column align-items-center gap-4 justify-content-center">
-      @if (authService.getUserDetail()) {
-      <h2 class="h3">
-        You are logged in as
-        <span class="font-weight-bold bg-primary text-white rounded p-2">
-          {{ authService.getUserDetail()?.fullName }}
-        </span>
-      </h2>
-      } @else {
-        <h2 class="h3">You are not logged in</h2>
-        <a routerLink="/login">
-          <button class="btn btn-primary">
-            Login
-          </button>
-        </a>
-      }
+  <div class="d-flex flex-column justify-content-center vh-50">
+    <div class="text-center">
+      <div class="d-flex flex-column gap-4 justify-content-center">
+        <!-- Check if user is logged in -->
+        <ng-container *ngIf="authService.getUserDetail(); else loginMessage">
+          <!-- Show books if the user is logged in -->
+          <div *ngIf="books$ | async as books; else loading">
+            <div *ngIf="books.length > 0; else noBooks">
+              <h3>Boklista:</h3>
+              <ul>
+                <li *ngFor="let book of books">
+                  <p>{{ book.bookName }} av {{ book.author }}</p>
+                  <button class="btn mx-3 py-1"  (click)="editBook(book.id)">Edit</button>
+                  <button mat-button color="warn" class="btn mx-3 py-1 red" (click)="deleteBook(book.id)">Delete</button>
+                </li>
+              </ul>
+            </div>
+            <ng-template #noBooks>
+              <h4>Inga böcker tillgängliga.</h4>
+            </ng-template>
+          </div>
+
+          <!-- Loading state while fetching books -->
+          <ng-template #loading>
+            <p>Laddar böcker...</p>
+          </ng-template>
+
+        </ng-container>
+
+        <!-- If not logged in, show login prompt -->
+        <ng-template #loginMessage>
+          <h2 class="h3">Du är inte inloggad</h2>
+          <a routerLink="/login">
+            <button class="btn btn-primary">Logga in</button>
+          </a>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>
