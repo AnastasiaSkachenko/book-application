@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 var JWTSetting = builder.Configuration.GetSection("JWTSetting");
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(opt=>opt.UseSqlite("Data Source=auth.db"));
+builder.Services.AddDbContext<AppDbContext>(opt=>opt.UseSqlite("Data Source=book-app.db"));
 
 builder.Services.AddIdentity<AppUser,IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
