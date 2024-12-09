@@ -11,5 +11,6 @@ namespace API.Data
 
         public DbSet<AppUser> Users { get; set; } = null!;
         public DbSet<Book> Books { get; set; } = null!;
+        public DbSet<Citat> Citats { get; set; } = null!;
     }
 }
