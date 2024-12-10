@@ -1,58 +1,85 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <form class="shadow-md rounded-md p-5 bg-white w-50" [formGroup]="registerForm" (ngSubmit)="register()">
+<div class="container d-flex justify-content-center align-items-center">
+  <form class="shadow-md rounded-md p-3 p-lg-5 bg-white w-100 w-lg-50" style="max-width: 600px;" [formGroup]="registerForm" (ngSubmit)="register()">
     <!-- Displaying errors -->
     <div *ngFor="let error of errors" class="alert alert-danger mb-2">
       <div class="small">{{ error.description }}</div>
     </div>
 
     <div class="py-4">
-      <h1 class="font-weight-bold text-left py-2">Register</h1>
-      <h6 class="text-muted text-base">Create your Account</h6>
+      <h2 class="text-center">Skapa konto</h2>
     </div>
 
+    <!-- Email Field -->
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email" />
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <input type="email" id="email" class="form-control" placeholder="Email" formControlName="email" />
+      </div>
       <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger">
-        <small>Email is required and must be valid</small>
+        <small>Email är obligatorisk och måste vara giltig</small>
       </div>
     </div>
 
+    <!-- Full Name Field -->
     <div class="mb-3">
-      <label for="fullName" class="form-label">Full Name</label>
-      <input type="text" id="fullName" class="form-control" placeholder="Full name" formControlName="fullName" />
+      <label for="fullName" class="form-label">Namn</label>
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="fas fa-user"></i>
+        </span>
+        <input type="text" id="fullName" class="form-control" placeholder="Namn" formControlName="fullName" />
+      </div>
       <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched" class="text-danger">
-        <small>Full name is required</small>
+        <small>Namn är obligatorisk</small>
       </div>
     </div>
 
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="{{ passwordHide ? 'password' : 'text' }}" id="password" class="form-control" placeholder="Password" formControlName="password" />
-      <mat-icon matPrefix>lock</mat-icon>
-      <mat-icon (click)="passwordHide = !passwordHide" matSuffix>{{ passwordHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+    <!-- Password Field -->
+    <div class="mb-3 position-relative">
+      <label for="password" class="form-label">Lösenord</label>
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="fas fa-lock"></i>
+        </span>
+        <input type="{{ passwordHide ? 'password' : 'text' }}" id="password" class="form-control" placeholder="Lösenord" formControlName="password" />
+        <span class="input-group-text cursor-pointer" (click)="passwordHide = !passwordHide">
+          <i class="fas" [class.fa-eye-slash]="passwordHide" [class.fa-eye]="!passwordHide"></i>
+        </span>
+      </div>
       <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
-        <small>Password is required</small>
+        <small>Lösenord är obligatorisk</small>
       </div>
     </div>
 
-    <div class="mb-3">
-      <label for="confirmPassword" class="form-label">Confirm Password</label>
-      <input type="{{ confirmPasswordHide ? 'password' : 'text' }}" id="confirmPassword" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" />
-      <mat-icon matPrefix>lock</mat-icon>
-      <mat-icon (click)="confirmPasswordHide = !confirmPasswordHide" matSuffix>{{ confirmPasswordHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+    <!-- Confirm Password Field -->
+    <div class="mb-3 position-relative">
+      <label for="confirmPassword" class="form-label">Bekräfta lösenord</label>
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="fas fa-lock"></i>
+        </span>
+        <input type="{{ confirmPasswordHide ? 'password' : 'text' }}" id="confirmPassword" class="form-control" placeholder="Bekräfta lösenord" formControlName="confirmPassword" />
+        <span class="input-group-text cursor-pointer" (click)="confirmPasswordHide = !confirmPasswordHide">
+          <i class="fas" [class.fa-eye-slash]="confirmPasswordHide" [class.fa-eye]="!confirmPasswordHide"></i>
+        </span>
+      </div>
       <div *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.dirty && registerForm.get('confirmPassword')?.touched" class="text-danger">
-        <small>Passwords do not match</small>
+        <small>Lösenord är inte lika</small>
       </div>
     </div>
 
+    <!-- Submit Button -->
     <div class="text-center">
-      <button [disabled]="!registerForm.valid" class="btn btn-primary w-100" type="submit">Register</button>
+      <button [disabled]="!registerForm.valid" class="btn btn-primary w-100" type="submit">Registera dig</button>
     </div>
 
+    <!-- Login Redirect -->
     <div class="my-4 text-center">
-      <span class="text-muted">Already have an account? </span>
-      <a href="" [routerLink]="['/login']" class="text-primary">Login</a>
+      <span class="text-muted">Redan har en konto? </span>
+      <a href="" [routerLink]="['/login']" class="text-primary">Logga in</a>
     </div>
   </form>
 </div>

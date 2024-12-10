@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -26,6 +27,22 @@ export class NavbarComponent {
   authService = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
+  userDetail: any = null;
+
+  isSmallScreen: boolean = false;
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit(): void {
+    this.breakpointObserver
+      .observe(['(max-width: 600px)'])
+      .subscribe((result) => {
+        this.isSmallScreen = result.matches;
+       });
+
+    this.userDetail = this.authService.getUserDetail();
+   }
+
 
   isLoggedIn() {
     return this.authService.isLoggedIn();
@@ -39,4 +56,6 @@ export class NavbarComponent {
     });
     this.router.navigate(['/login']);
   };
+
+
 }

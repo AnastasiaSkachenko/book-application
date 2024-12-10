@@ -1,6 +1,6 @@
-<div class="d-flex align-items-center vh-100">
-  <div class="container my-4 p-4 bg-white shadow rounded" style="max-width: 500px;">
-    <h1 class="h3 text-secondary text-center fw-bold mb-4">Account Detail</h1>
+<div class="d-flex align-items-center justify-content-center main"  >
+  <div class="container my-4 p-4 bg-white w-80% shadow rounded my-box" style="max-width: 500px;">
+    <h1 class="h3 text-secondary text-center fw-bold mb-4">Kontodetaljer</h1>
     <div *ngIf="accountDetail$ | async as user">
       <div class="text-center">
         <!-- User's Initial -->
@@ -11,18 +11,13 @@
         <hr class="mb-4">
         <!-- Account Details -->
         <div class="row g-2 text-start">
-          <div class="col-6 fw-bold text-secondary">Full Name</div>
+          <div class="col-6 fw-bold text-secondary">Namn</div>
           <div class="col-6 text-dark">{{ user.fullName | titlecase }}</div>
 
           <div class="col-6 fw-bold text-secondary">Email</div>
           <div class="col-6 text-dark">{{ user.email }}</div>
 
-          <div class="col-6 fw-bold text-secondary">Phone</div>
-          <div class="col-6 text-dark">{{ user.phoneNumber || '-' }}</div>
-
-          <div class="col-6 fw-bold text-secondary">Access Failed Count</div>
-          <div class="col-6 text-dark">{{ user.accessFailedCount || '-' }}</div>
-        </div>
+         </div>
       </div>
     </div>
   </div>

@@ -6,35 +6,35 @@
     </div>
 
     <div class="py-4">
-      <h1 class="font-weight-bold text-center py-2">Add Book</h1>
+      <h1 class="font-weight-bold text-center py-2">Lägg till en bok</h1>
     </div>
 
     <!-- Book Name -->
     <div class="my-3">
       <label for="bookName" class="form-label">
-        <i class="fas fa-book"></i> Book Name
+        <i class="fas fa-book"></i> Bok namn
       </label>
-      <input type="text" id="bookName" class="form-control" placeholder="Book name" formControlName="bookName" />
+      <input type="text" id="bookName" class="form-control" placeholder="Bok namn" formControlName="bookName" />
       <div *ngIf="addBookForm.get('bookName')?.invalid && addBookForm.get('bookName')?.touched" class="text-danger">
-        <small>Book name is required</small>
+        <small>Bok nanm är obligatorisk</small>
       </div>
     </div>
 
     <!-- Author -->
     <div class="my-3">
       <label for="author" class="form-label">
-        <i class="fas fa-user"></i> Author
+        <i class="fas fa-user"></i> Förtfattare
       </label>
-      <input type="text" id="author" class="form-control" placeholder="Author" formControlName="author" />
+      <input type="text" id="author" class="form-control" placeholder="Förtfattare" formControlName="author" />
       <div *ngIf="addBookForm.get('author')?.invalid && addBookForm.get('author')?.touched" class="text-danger">
-        <small>Author is required</small>
+        <small>Förtfattare är obligatorisk</small>
       </div>
     </div>
 
     <!-- Publish Date -->
     <div class="my-3">
       <label for="publishDate" class="form-label">
-        <i class="fas fa-calendar-alt"></i> Publish Date
+        <i class="fas fa-calendar-alt"></i> Publicering datum
       </label>
       <input type="date" id="publishDate" class="form-control" formControlName="publishDate" />
     </div>
@@ -48,17 +48,15 @@
           [disabled]="!addBookForm.valid"
           class="btn btn-primary w-100"
           type="submit">
-          <i class="fas fa-plus-circle"></i> Add Book
+          Lägga till en bok
         </button>
       </div>
 
       <div class="disabled-message" *ngIf="!addBookForm.valid && isButtonHovered">
-        Please fill in all fields to save the book.
+        Du måste fylla i allt information för att lägga till boken.
       </div>
 
-      <button class="btn addButton" (click)="cancel($event)" type="button">
-        <i class="fas fa-times-circle"></i> Cancel
-      </button>
+      <button class="btn addButton" (click)="cancel($event)" type="button">Avbryta</button>
     </div>
   </form>
 </div>

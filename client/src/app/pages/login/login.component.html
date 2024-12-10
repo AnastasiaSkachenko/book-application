@@ -1,38 +1,43 @@
-<div class="d-flex align-items-center justify-content-center vh-100">
-  <form class="shadow-sm rounded p-4 bg-white w-25" [formGroup]="form" (ngSubmit)="login()">
+<div class="d-flex align-items-center justify-content-center  ">
+  <form class="shadow-md rounded-md p-4 p-lg-5 mt-lg-5 bg-white w-100" style="max-width: 600px;" [formGroup]="form" (ngSubmit)="login()">
     <div class="py-4 text-center">
-      <h1 class="font-weight-bold py-2">
-        Login
-      </h1>
-      <h6 class="text-muted">
-        Login to your account
-      </h6>
+       <h1  class="text-center">Logga in</h1>
     </div>
 
+    <!-- Email Field -->
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input id="email" class="form-control" type="email" placeholder="Email" formControlName="email" />
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <input id="email" class="form-control" type="email" placeholder="Email" formControlName="email" />
+      </div>
     </div>
 
+    <!-- Password Field -->
     <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
+      <label for="password" class="form-label">Lösenord</label>
       <div class="input-group">
-        <input id="password" class="form-control" type="{{ hide ? 'password' : 'text'}}" formControlName="password" placeholder="Password" />
+        <span class="input-group-text">
+          <i class="fas fa-lock"></i>
+        </span>
+        <input id="password" class="form-control" type="{{ hide ? 'password' : 'text'}}" formControlName="password" placeholder="Lösenord" />
         <button class="btn btn-outline-secondary" type="button" (click)="hide = !hide">
-          {{ hide ? 'Show' : 'Hide'}}
+          <i class="fas" [class.fa-eye-slash]="hide" [class.fa-eye]="!hide"></i>
         </button>
       </div>
     </div>
 
+    <!-- Submit Button -->
     <button type="submit" [disabled]="!form.valid" class="w-100 btn btn-primary font-weight-bold">
-      Login
+      Logga in
     </button>
 
+    <!-- Register Redirect -->
     <div class="mt-4 text-center">
-      <span class="text-muted">
-        Don't have an account?
-      </span>
-      <a class="text-primary" [routerLink]="['/register']">Register</a>
+      <span class="text-muted">Har inte konto än? </span>
+      <a class="text-primary" [routerLink]="['/register']">Registera dig</a>
     </div>
   </form>
 </div>

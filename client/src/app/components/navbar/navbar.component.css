@@ -1,0 +1,17 @@
+/* Default styling for links-container */
+.links-container {
+  display: flex;
+}
+
+/* Adjust toolbar for small screens */
+@media (max-width: 768px) {
+  /* Always show links-container */
+  .links-container {
+    display: flex;
+  }
+
+  /* Hide login/register buttons for small screens */
+  .auth-links {
+    display: none;
+  }
+}

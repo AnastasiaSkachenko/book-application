@@ -1,43 +1,47 @@
-<div class="p-5">
+<div class="p-lg-5 p-3 pt-4 main" [@fadeIn]>
   <button class="btn addButton" [routerLink]="['add-book']">Lägg till ny bok</button>
 
-  <div class="d-flex flex-column justify-content-center vh-50">
-    <div class="text-center">
-      <div class="d-flex flex-column gap-4 justify-content-center">
-        <!-- Check if user is logged in -->
-        <ng-container *ngIf="authService.getUserDetail(); else loginMessage">
-          <!-- Show books if the user is logged in -->
-          <div *ngIf="books$ | async as books; else loading">
-            <div *ngIf="books.length > 0; else noBooks">
-              <h3>Boklista:</h3>
-              <ul>
-                <li *ngFor="let book of books">
-                  <p>{{ book.bookName }} av {{ book.author }}</p>
-                  <button class="btn mx-3 py-1"  (click)="editBook(book.id)">Edit</button>
-                  <button mat-button color="warn" class="btn mx-3 py-1 red" (click)="deleteBook(book.id)">Delete</button>
-                </li>
-              </ul>
-            </div>
-            <ng-template #noBooks>
-              <h4>Inga böcker tillgängliga.</h4>
-            </ng-template>
-          </div>
 
-          <!-- Loading state while fetching books -->
-          <ng-template #loading>
-            <p>Laddar böcker...</p>
-          </ng-template>
-
-        </ng-container>
-
-        <!-- If not logged in, show login prompt -->
-        <ng-template #loginMessage>
-          <h2 class="h3">Du är inte inloggad</h2>
-          <a routerLink="/login">
-            <button class="btn btn-primary">Logga in</button>
-          </a>
+  <div class="d-flex flex-column  vh-50 gap-4  ">
+    <!-- Check if user is logged in -->
+    <ng-container *ngIf="authService.getUserDetail(); else loginMessage">
+      <!-- Show books if the user is logged in -->
+      <div *ngIf="books$ | async as books; else loading">
+        <div *ngIf="books.length > 0; else noBooks">
+          <h1 class="fw-bold  m-4 mt-lg-5 mb-lg-3 mx-1">Boklista:</h1>
+          <ul class="m-0 p-1 bg-gray">
+            <li *ngFor="let book of books" class="d-flex  p-3 justify-content-between align-items-center mb-3  book">
+              <div >
+                <h2>{{ book.bookName }}</h2>
+                <h4 class="mx-2">Av <span class="semi-bold">{{ book.author }}</span></h4>
+                <h4 class="mx-2">Publicering datum: <span class="semi-bold">{{ book.publishDate }}</span></h4>
+              </div>
+              <div class="flex">
+                <button class="btn mx-3 py-1" (click)="editBook(book.id)">Redigera</button>
+                <button mat-button color="warn" class="btn mx-3 py-1 red" (click)="deleteBook(book.id)">Radera</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <ng-template #noBooks>
+          <h4>Inga böcker tillgängliga.</h4>
         </ng-template>
       </div>
-    </div>
+
+      <!-- Loading state while fetching books -->
+      <ng-template #loading>
+        <p>Laddar böcker...</p>
+      </ng-template>
+
+    </ng-container>
+
+    <!-- If not logged in, show login prompt -->
+    <ng-template #loginMessage>
+      <h2 class="h3">Du är inte inloggad</h2>
+      <a routerLink="/login">
+        <button class="btn btn-primary">Logga in</button>
+      </a>
+    </ng-template>
   </div>
-</div>
+
+ </div>

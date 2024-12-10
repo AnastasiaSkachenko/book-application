@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookDetail } from '../../interfaces/bookDetail';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,15 @@ import { BookDetail } from '../../interfaces/bookDetail';
   imports: [RouterLink, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0 })),
+      transition('void => *', [
+        animate('500ms ease-in')
+      ]),
+    ])
+  ]
+
 })
 export class HomeComponent {
   authService = inject(AuthService);

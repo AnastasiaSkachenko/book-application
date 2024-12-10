@@ -1,0 +1,13 @@
+.main {
+  margin-top: 10em;
+}
+
+.my-box {
+  width: 80%;
+}
+
+@media screen and (max-width: 880px) {
+  .main {
+    margin-top: 3em;
+  }
+}
