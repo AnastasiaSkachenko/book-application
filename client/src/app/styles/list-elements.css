@@ -1,0 +1,35 @@
+li {
+  list-style: none;
+  border-radius: 0.5em;
+
+}
+
+li div {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+li h2,
+li h4 {
+  margin: 0;
+  line-height: 1.5;
+}
+
+li h2 {
+  white-space: normal;
+  word-break: break-word;
+}
+
+li h4 span {
+  display: inline-block;
+  overflow-wrap: break-word;
+}
+
+
+@media screen and (max-width:590px) {
+  li {
+    display: block;
+    flex-direction: column;
+  }
+}

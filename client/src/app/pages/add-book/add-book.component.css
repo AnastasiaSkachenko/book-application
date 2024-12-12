@@ -1,29 +1,6 @@
-.main {
-  font-size: 1.2em;
-}
-
-/* Style for the disabled message */
-.disabled-message {
-  margin-top: 10px;
-  color: #d9534f;
-  font-size: 14px;
-  text-align: center;
-  animation: fadeIn 0.3s ease-in-out forwards;
- }
-
- @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 
-form {
-  max-width: 600px;
-}
+
 
 
 

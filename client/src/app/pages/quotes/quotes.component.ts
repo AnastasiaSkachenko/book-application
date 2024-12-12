@@ -7,6 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Quote } from '../../interfaces/quote';
 import { map, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-citats',
@@ -28,16 +29,21 @@ export class QuotesComponent {
   quoteService = inject(QuoteService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
-
+  currentTheme: 'light' | 'dark' = 'light';
   quotes$: Observable<Quote[]>;
 
-  constructor() {
+  constructor(private themeService: ThemeService) {
     // Fetch quotes only if the user is authenticated
     this.quotes$ = this.authService.getUserDetail()
       ? this.quoteService.getQuotes().pipe(
           map(quotes => quotes.reverse())  // Reverse quotes array
         )
       : new Observable<any[]>();  // Empty observable when not authenticated
+  }
+
+  onThemeToggle(): void {
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.currentTheme);
   }
 
   deleteQuote(quoteId: string): void {

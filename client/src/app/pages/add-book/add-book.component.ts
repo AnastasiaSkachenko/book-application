@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BookService } from '../../services/book.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-add-book',
@@ -34,6 +35,16 @@ export class AddBookComponent {
   errors!: ValidationError[];
   isButtonHovered: boolean = false;
   today: string = new Date().toISOString().split('T')[0];
+  currentTheme: 'light' | 'dark' = 'light';
+
+  constructor(private themeService: ThemeService){}
+
+  onThemeToggle(): void {
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.currentTheme);
+  }
+
+
 
   onButtonMouseEnter(): void {
     this.isButtonHovered = true;

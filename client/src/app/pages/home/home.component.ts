@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookDetail } from '../../interfaces/bookDetail';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +34,21 @@ export class HomeComponent {
 
   books$: Observable<BookDetail[]>;
 
-  constructor() {
+  currentTheme: 'light' | 'dark' = 'light';
+
+
+  ngOnInit(): void {
+    // Load and apply theme on component initialization
+    this.currentTheme = this.themeService.getTheme();
+    this.themeService.setTheme(this.currentTheme);
+  }
+
+  onThemeToggle(): void {
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.currentTheme);
+  }
+
+  constructor(private themeService: ThemeService) {
     // Fetch books only if the user is authenticated
     this.books$ = this.authService.getUserDetail()
       ? this.bookService.getBooks().pipe(

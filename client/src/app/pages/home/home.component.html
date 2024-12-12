@@ -1,24 +1,25 @@
-<div class="p-lg-5 p-3 pt-4 main" [@fadeIn]>
-  <button class="btn  addButton" [routerLink]="['add-book']">Lägg till ny bok</button>
+<div class="p-lg-5 p-3 pt-4" [@fadeIn]>
 
 
   <div class="d-flex flex-column  vh-50 gap-4  ">
     <!-- Check if user is logged in -->
     <ng-container *ngIf="authService.getUserDetail(); else loginMessage">
       <!-- Show books if the user is logged in -->
+      <button class="btn  btn-primary" style="max-width: 150px;" [routerLink]="['add-book']">Lägg till ny bok</button>
+
       <div *ngIf="books$ | async as books; else loading">
         <div *ngIf="books.length > 0; else noBooks">
-          <h1 class="fw-bold  m-4 mt-lg-5 mb-lg-3 mx-1">Boklista:</h1>
+          <h2 class="fw-bold  m-3   mb-4 mx-1">Boklista:</h2>
           <ul class="m-0 p-1 bg-gray">
-            <li *ngFor="let book of books" class="d-flex flex-column flex-md-row p-3 justify-content-between align-items-center mb-3 book">
+            <li *ngFor="let book of books" class="d-flex flex-column flex-md-row p-3   mb-3 book shadow-sm">
               <div class="flex-grow-1">
-                <h2  class="mx-2">{{ book.bookName }}</h2>
-                <h4 class="mx-2">Av <span class="semi-bold">{{ book.author }}</span></h4>
-                <h4 class="mx-2">Publicering datum: <span class="semi-bold">{{ book.publishDate }}</span></h4>
+                <h4  class="mx-2"><i class="fas fa-book"></i> {{ book.bookName }}</h4>
+                <h6 class="mx-2 mt-1 mx-lg-3"> <span  ><i class="fas fa-user"></i> {{ book.author }}</span></h6>
+                <h6 class="mx-2 mt-1 mx-lg-3">  <span  ><i class="fas fa-calendar-alt"></i> {{ book.publishDate }}</span></h6>
               </div>
               <div class="d-flex align-items-center gap-3 gap-sm-1 mt-2 mt-md-0">
-                <button class="btn mx-1 mx-lg-3 py-1" (click)="editBook(book.id)">Redigera</button>
-                <button class="btn mx-1 mx-lg-3 py-1 red" (click)="deleteBook(book.id)">Radera</button>
+                <button class="btn btn-primary mx-1 mx-lg-3 py-1" (click)="editBook(book.id)">Redigera</button>
+                <button class="btn btn-primary mx-1 mx-lg-3 py-1 red" (click)="deleteBook(book.id)">Radera</button>
               </div>
             </li>
           </ul>

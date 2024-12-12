@@ -8,6 +8,7 @@ import { Router, RouterLink } from '@angular/router';
 import { ValidationError } from '../../interfaces/validation-error';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-add-quote',
@@ -33,6 +34,15 @@ export class AddQuoteComponent {
   router = inject(Router);
   errors!: ValidationError[];
   isButtonHovered: boolean = false;
+  currentTheme: 'light' | 'dark' = 'light';
+
+  constructor(private themeService: ThemeService){}
+
+  onThemeToggle(): void {
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.currentTheme);
+  }
+
 
   onButtonMouseEnter(): void {
     this.isButtonHovered = true;

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="px-4 py-3">
+<mat-toolbar color="primary p-3 fixed-top" class="px-4 py-3">
   <!-- Links for All Screens -->
   <div class="d-flex align-items-left links-container">
     <a routerLink="/" class="ms-2 text-white text-decoration-none">Boklista</a>
@@ -13,7 +13,7 @@
       <div
         class="rounded-circle bg-danger text-white fw-bold shadow d-flex justify-content-center align-items-center"
         style="width: 40px; height: 40px;">
-        {{ userDetail?.fullName[0]?.toUpperCase() }}
+        {{   userDetail?.fullName[0]?.toUpperCase() }}
       </div>
     </a>
         <mat-menu  #userMenu="matMenu">

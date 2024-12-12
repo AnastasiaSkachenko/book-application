@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Book } from '../../interfaces/book';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -32,11 +33,22 @@ export class EditBookComponent implements OnInit {
   matSnackBar = inject(MatSnackBar);
   fb = inject(FormBuilder);
   router = inject(Router);
-  route = inject(ActivatedRoute);  // Inject ActivatedRoute to access route parameters
+  route = inject(ActivatedRoute);
+  currentTheme: 'light' | 'dark' = 'light';
+
 
   errors!: ValidationError[];
 
   today: string = new Date().toISOString().split('T')[0];
+
+
+  constructor(private themeService: ThemeService){}
+
+  onThemeToggle(): void {
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.themeService.setTheme(this.currentTheme);
+  }
+
 
   // Define the form group for book details
   editBookForm: FormGroup = this.fb.group({
