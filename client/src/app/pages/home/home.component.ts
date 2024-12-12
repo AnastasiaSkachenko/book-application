@@ -3,13 +3,11 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { BookService } from '../../services/book.service';
 import { Observable } from 'rxjs';
-import { Book } from '../../interfaces/book';
 import { CommonModule } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookDetail } from '../../interfaces/bookDetail';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-
 
 @Component({
   selector: 'app-home',
@@ -47,8 +45,8 @@ export class HomeComponent {
   deleteBook(bookId: string): void {
     // Show a snack bar with a confirm action
     const snackBarRef = this.matSnackBar.open(
-      'Are you sure you want to delete this book?',
-      'Confirm',  // Action button text
+      'Är du säker på att du vill ta bort denna bok?', // Translated message
+      'Bekräfta',  // Translated button text
       { duration: 5000, horizontalPosition: 'center' }
     );
 
@@ -56,9 +54,9 @@ export class HomeComponent {
     snackBarRef.onAction().subscribe(() => {
       this.bookService.deleteBook(bookId).subscribe({
         next: (response) => {
-          console.log('Book deleted:', response);
+          console.log('Boken borttagen:', response);  // Translated log message
           // Optionally show a success message after deletion
-          this.matSnackBar.open('Book deleted successfully!', 'Close', {
+          this.matSnackBar.open('Boken har tagits bort framgångsrikt!', 'Stäng', {  // Translated message
             duration: 3000,
             horizontalPosition: 'center',
           });
@@ -67,9 +65,9 @@ export class HomeComponent {
           );
         },
         error: (err) => {
-          console.error('Error deleting book:', err);
+          console.error('Fel vid borttagning av bok:', err);  // Translated log message
           // Optionally handle errors (e.g., show an error message)
-          this.matSnackBar.open('Error deleting book. Please try again.', 'Close', {
+          this.matSnackBar.open('Fel vid borttagning av bok. Försök igen.', 'Stäng', {  // Translated message
             duration: 3000,
             horizontalPosition: 'center',
           });

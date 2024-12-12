@@ -2,6 +2,13 @@
 .links-container {
   display: flex;
 }
+a.cursor-pointer, a.cursor-pointer * {
+  cursor: pointer;
+}
+
+
+
+
 
 /* Adjust toolbar for small screens */
 @media (max-width: 768px) {
@@ -10,8 +17,5 @@
     display: flex;
   }
 
-  /* Hide login/register buttons for small screens */
-  .auth-links {
-    display: none;
-  }
+
 }

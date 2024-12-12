@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -21,7 +22,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     CommonModule,
   ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styleUrls: ['./navbar.component.css'], // Fixed styleUrl to styleUrls
 })
 export class NavbarComponent {
   authService = inject(AuthService);
@@ -38,11 +39,10 @@ export class NavbarComponent {
       .observe(['(max-width: 600px)'])
       .subscribe((result) => {
         this.isSmallScreen = result.matches;
-       });
+      });
 
     this.userDetail = this.authService.getUserDetail();
-   }
-
+  }
 
   isLoggedIn() {
     return this.authService.isLoggedIn();
@@ -50,12 +50,10 @@ export class NavbarComponent {
 
   logout = () => {
     this.authService.logout();
-    this.matSnackBar.open('Logout success', 'Close', {
+    this.matSnackBar.open('Utloggning lyckades', 'Stäng', {  // Translated 'Logout success' to 'Utloggning lyckades'
       duration: 5000,
       horizontalPosition: 'center',
     });
     this.router.navigate(['/login']);
   };
-
-
 }

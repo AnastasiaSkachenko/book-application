@@ -10,7 +10,6 @@ import { Book } from '../../interfaces/book';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
-
 @Component({
   selector: 'app-edit-book',
   standalone: true,
@@ -73,8 +72,8 @@ export class EditBookComponent implements OnInit {
         });
       },
       error: (err) => {
-        console.error('Error fetching book details:', err);
-        this.matSnackBar.open('Error fetching book details', 'Close', {
+        console.error('Fel vid hämtning av bokdetaljer:', err);  // Translated log message
+        this.matSnackBar.open('Fel vid hämtning av bokdetaljer', 'Stäng', {  // Translated message
           duration: 5000,
           horizontalPosition: 'center',
         });
@@ -94,7 +93,7 @@ export class EditBookComponent implements OnInit {
       next: (response) => {
         console.log(response);
 
-        this.matSnackBar.open(response.message, 'Close', {
+        this.matSnackBar.open(response.message, 'Stäng', {  // Translated message
           duration: 5000,
           horizontalPosition: 'center',
         });
@@ -105,13 +104,13 @@ export class EditBookComponent implements OnInit {
       error: (err: HttpErrorResponse) => {
         this.errors = err!.error;
         if (err!.status == 400) {
-          this.matSnackBar.open('Validation error', 'Close', {
+          this.matSnackBar.open('Valideringsfel', 'Stäng', {  // Translated message
             duration: 5000,
             horizontalPosition: 'center',
           });
         }
       },
-      complete: () => console.log('Book update success')
+      complete: () => console.log('Boken uppdaterad framgångsrikt')  // Translated log message
     });
   }
 

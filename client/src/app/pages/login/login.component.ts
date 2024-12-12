@@ -22,7 +22,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],  // Fix typo: `styleUrl` to `styleUrls`
 })
 export class LoginComponent implements OnInit {
   authService = inject(AuthService);
@@ -35,14 +35,14 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.form.value).subscribe({
       next: (response) => {
-        this.matSnackBar.open(response.message, 'Close', {
+        this.matSnackBar.open(response.message, 'Stäng', {  // Translated button text
           duration: 5000,
           horizontalPosition: 'center',
         });
         this.router.navigate(['/']);
       },
       error: (error) => {
-        this.matSnackBar.open(error.error.message, 'Close', {
+        this.matSnackBar.open(error.error.message, 'Stäng', {  // Translated button text
           duration: 5000,
           horizontalPosition: 'center',
         });

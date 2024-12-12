@@ -1,0 +1,55 @@
+<div class="container d-flex justify-content-center align-items-center vh-50 main" [@fadeIn]>
+  <form class="shadow-md rounded-md p-4 bg-white w-100 " [formGroup]="addQuoteForm" (ngSubmit)="addQuote()">
+    <!-- Displaying errors -->
+    <div *ngFor="let error of errors" class="alert alert-danger mb-2">
+      <div class="small">{{ error.description }}</div>
+    </div>
+
+    <div class="py-4">
+      <h1 class="font-weight-bold text-center py-2">Lägg till en citat</h1>
+    </div>
+
+    <!-- Book Name -->
+    <div class="my-3">
+      <label for="quote" class="form-label">
+        <i class="fas fa-book"></i> Citat text
+      </label>
+      <input type="text" id="quote" class="form-control" placeholder="Citat text" formControlName="citatText" />
+      <div *ngIf="addQuoteForm.get('citatText')?.invalid && addQuoteForm.get('citatText')?.touched" class="text-danger">
+        <small>Citat text är obligatorisk</small>
+      </div>
+    </div>
+
+    <!-- Author -->
+    <div class="my-3">
+      <label for="author" class="form-label">
+        <i class="fas fa-user"></i> Förtfattare
+      </label>
+      <input type="text" id="author" class="form-control" placeholder="Förtfattare" formControlName="author" />
+      <div *ngIf="addQuoteForm.get('author')?.invalid && addQuoteForm.get('author')?.touched" class="text-danger">
+        <small>Förtfattare är obligatorisk</small>
+      </div>
+    </div>
+
+
+    <div class="text-center">
+      <div
+        class="button-wrapper"
+        (mouseenter)="onButtonMouseEnter()"
+        (mouseleave)="onButtonMouseLeave()">
+        <button
+          [disabled]="!addQuoteForm.valid"
+          class="btn btn-primary w-100"
+          type="submit">
+          Lägga till en citat
+        </button>
+      </div>
+
+      <div class="disabled-message" *ngIf="!addQuoteForm.valid && isButtonHovered">
+        Du måste fylla i allt information för att lägga till citat.
+      </div>
+
+      <button class="btn addButton" (click)="cancel($event)" type="button">Avbryta</button>
+    </div>
+  </form>
+</div>

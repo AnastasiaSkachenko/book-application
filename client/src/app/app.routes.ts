@@ -6,6 +6,8 @@ import { AccountComponent } from './pages/account/account.component';
 import { authGuard } from './guards/auth.guard';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import { EditBookComponent } from './pages/edit-book/edit-book.component';
+import { QuotesComponent } from './pages/quotes/quotes.component';
+import { AddQuoteComponent } from './pages/add-quote/add-quote.component';
 
 export const routes: Routes = [
   {
@@ -36,4 +38,15 @@ export const routes: Routes = [
     component: EditBookComponent,
     canActivate: [authGuard]
   },
+  {
+    path: 'quotes',
+    component: QuotesComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'add-quote',
+    component: AddQuoteComponent,
+    canActivate: [authGuard]
+  },
+
 ];

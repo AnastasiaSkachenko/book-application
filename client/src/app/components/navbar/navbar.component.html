@@ -2,13 +2,13 @@
   <!-- Links for All Screens -->
   <div class="d-flex align-items-left links-container">
     <a routerLink="/" class="ms-2 text-white text-decoration-none">Boklista</a>
-    <a routerLink="/" class="ms-2 text-white text-decoration-none">Citat</a>
+    <a routerLink="/quotes" class="ms-2 text-white text-decoration-none">Citat</a>
   </div>
 
   <div class="flex-grow-1"></div>
 
   <!-- User Profile Circle Always Visible -->
-  <div *ngIf="isLoggedIn()" class="d-flex gap-3 align-items-center">
+  <div *ngIf="isLoggedIn()" class="d-flex gap-3 align-items-center cursor-pointer">
     <a [matMenuTriggerFor]="userMenu" class="d-flex align-items-center gap-2 text-white text-decoration-none cursor-pointer">
       <div
         class="rounded-circle bg-danger text-white fw-bold shadow d-flex justify-content-center align-items-center"
@@ -16,12 +16,12 @@
         {{ userDetail?.fullName[0]?.toUpperCase() }}
       </div>
     </a>
-    <mat-menu #userMenu="matMenu">
-      <button mat-menu-item [routerLink]="['account', userDetail?.id]">
+        <mat-menu  #userMenu="matMenu">
+      <button mat-menu-item [routerLink]="['account', userDetail?.id]" class="cursor-pointer">
         <mat-icon>account_circle</mat-icon>
         <span>Se profil</span>
       </button>
-      <button mat-menu-item (click)="logout()">
+      <button mat-menu-item (click)="logout()" class="cursor-pointer">
         <mat-icon>logout</mat-icon>
         <span>Logga ut</span>
       </button>

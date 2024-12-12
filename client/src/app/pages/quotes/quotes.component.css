@@ -16,11 +16,7 @@ button:hover {
 }
 
 
-.book {
-  background-color: rgb(242, 243, 249);
-  border: 0.1em, solid, rgb(225, 226, 255);
-  border-radius: 0.5em;
-}
+
 
 .semi-bold {
   font-weight: 600; /* Semi-bold weight */
@@ -39,24 +35,24 @@ li {
   list-style: none;
 }
 
-.book div {
+li div {
   max-width: 100%; /* Ensure the content stays within the container */
   word-wrap: break-word; /* Break long words to wrap */
   overflow-wrap: break-word; /* Modern equivalent */
 }
 
-.book h2,
-.book h4 {
+li h2,
+li h4 {
   margin: 0;
   line-height: 1.5; /* Adjust line height for readability */
 }
 
-.book h2 {
+li h2 {
   white-space: normal; /* Allow wrapping */
   word-break: break-word;
 }
 
-.book h4 span {
+li h4 span {
   display: inline-block; /* Keep inline elements within bounds */
   overflow-wrap: break-word;
 }

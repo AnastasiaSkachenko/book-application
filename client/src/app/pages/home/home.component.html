@@ -1,5 +1,5 @@
 <div class="p-lg-5 p-3 pt-4 main" [@fadeIn]>
-  <button class="btn addButton" [routerLink]="['add-book']">Lägg till ny bok</button>
+  <button class="btn  addButton" [routerLink]="['add-book']">Lägg till ny bok</button>
 
 
   <div class="d-flex flex-column  vh-50 gap-4  ">
@@ -10,19 +10,19 @@
         <div *ngIf="books.length > 0; else noBooks">
           <h1 class="fw-bold  m-4 mt-lg-5 mb-lg-3 mx-1">Boklista:</h1>
           <ul class="m-0 p-1 bg-gray">
-            <li *ngFor="let book of books" class="d-flex  p-3 justify-content-between align-items-center mb-3  book">
-              <div >
-                <h2>{{ book.bookName }}</h2>
+            <li *ngFor="let book of books" class="d-flex flex-column flex-md-row p-3 justify-content-between align-items-center mb-3 book">
+              <div class="flex-grow-1">
+                <h2  class="mx-2">{{ book.bookName }}</h2>
                 <h4 class="mx-2">Av <span class="semi-bold">{{ book.author }}</span></h4>
                 <h4 class="mx-2">Publicering datum: <span class="semi-bold">{{ book.publishDate }}</span></h4>
               </div>
-              <div class="flex">
-                <button class="btn mx-3 py-1" (click)="editBook(book.id)">Redigera</button>
-                <button mat-button color="warn" class="btn mx-3 py-1 red" (click)="deleteBook(book.id)">Radera</button>
+              <div class="d-flex align-items-center gap-3 gap-sm-1 mt-2 mt-md-0">
+                <button class="btn mx-1 mx-lg-3 py-1" (click)="editBook(book.id)">Redigera</button>
+                <button class="btn mx-1 mx-lg-3 py-1 red" (click)="deleteBook(book.id)">Radera</button>
               </div>
             </li>
           </ul>
-        </div>
+                  </div>
         <ng-template #noBooks>
           <h4>Inga böcker tillgängliga.</h4>
         </ng-template>

@@ -1,20 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthService } from '../../services/auth.service';
+import { QuoteService } from '../../services/quote.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ValidationError } from '../../interfaces/validation-error';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { BookService } from '../../services/book.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-add-book',
+  selector: 'app-add-quote',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterLink,],
-  templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.css'],
+  templateUrl: './add-quote.component.html',
+  styleUrls: ['./add-quote.component.css'], // Fixed styleUrl to styleUrls
   animations: [
     trigger('fadeIn', [
       state('void', style({ opacity: 0 })),
@@ -25,15 +25,14 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 
-export class AddBookComponent {
+export class AddQuoteComponent {
   authService = inject(AuthService);
-  bookService = inject(BookService);
+  quoteService = inject(QuoteService);
   matSnackBar = inject(MatSnackBar);
   fb = inject(FormBuilder);
   router = inject(Router);
   errors!: ValidationError[];
   isButtonHovered: boolean = false;
-  today: string = new Date().toISOString().split('T')[0];
 
   onButtonMouseEnter(): void {
     this.isButtonHovered = true;
@@ -44,20 +43,19 @@ export class AddBookComponent {
     this.isButtonHovered = false;
   }
 
-  addBookForm: FormGroup = this.fb.group({
-    bookName: ['', Validators.required],
+  addQuoteForm: FormGroup = this.fb.group({
+    citatText: ['', Validators.required],
     author: ['', Validators.required],
-    publishDate: [this.today, Validators.required],
   });
 
-  addBook() {
-    const formValue = this.addBookForm.value;
+  addQuote() {
+    const formValue = this.addQuoteForm.value;
 
-    // Capitalize book name and author before submitting
-    formValue.bookName = this.capitalizeWords(formValue.bookName);
+    // Capitalize the quote text and author before submitting
+    formValue.citatText = this.capitalizeWords(formValue.citatText);
     formValue.author = this.capitalizeWords(formValue.author);
 
-    this.bookService.addBook(formValue).subscribe({
+    this.quoteService.addQuote(formValue).subscribe({
       next: (response) => {
         console.log(response);
 
@@ -66,7 +64,7 @@ export class AddBookComponent {
           horizontalPosition: 'center',
         });
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/quotes']);
       },
       error: (err: HttpErrorResponse) => {
         this.errors = err!.error;
@@ -77,14 +75,14 @@ export class AddBookComponent {
           });
         }
       },
-      complete: () => console.log('Boken tillagd framgångsrikt')  // Translated 'Book add success' to 'Boken tillagd framgångsrikt'
+      complete: () => console.log('Citat tillagt framgångsrikt')  // Translated 'Quote add success' to 'Citat tillagt framgångsrikt'
     });
   }
 
   cancel(event: MouseEvent) {
     event.preventDefault(); // Prevent the form submission
-    this.addBookForm.reset(); // Reset the form
-    this.router.navigate(['/']); // Navigate to the homepage or another page
+    this.addQuoteForm.reset(); // Reset the form
+    this.router.navigate(['/quotes']); // Navigate to the quotes page or another page
   }
 
   // Utility function to capitalize the first letter of each word in a string

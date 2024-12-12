@@ -22,7 +22,7 @@ export class RegisterComponent {
   matSnackBar = inject(MatSnackBar)
   fb = inject(FormBuilder);
   router = inject(Router);
-  errors!:ValidationError[]
+  errors!: ValidationError[];
 
   // Initialize the form group directly in the class
   registerForm: FormGroup = this.fb.group(
@@ -52,27 +52,26 @@ export class RegisterComponent {
 
   register() {
     this.authService.register(this.registerForm.value).subscribe({
-      next: (response)=> {
-        console.log(response)
+      next: (response) => {
+        console.log(response);
 
-        this.matSnackBar.open(response.message, 'Close', {
+        this.matSnackBar.open(response.message, 'Stäng', {
           duration: 5000,
           horizontalPosition: 'center',
-        })
+        });
 
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
       },
-      error:(err:HttpErrorResponse) => {
-        this.errors = err!.error
+      error: (err: HttpErrorResponse) => {
+        this.errors = err!.error;
         if (err!.status == 400) {
-          this.matSnackBar.open('Validations error', 'Close', {
+          this.matSnackBar.open('Valideringsfel', 'Stäng', {
             duration: 5000,
             horizontalPosition: 'center',
-
-          })
+          });
         }
       },
-      complete: () => console.log('register success')
-    })
+      complete: () => console.log('Registrering lyckades')
+    });
   }
 }
