@@ -15,6 +15,8 @@ export class AuthService {
   apiUrl: string = environment.apiUrl;
   private tokenKey = 'token';
 
+
+
   constructor(private http: HttpClient) {}
 
   login(data: LoginRequest): Observable<AuthResponse> {
@@ -39,15 +41,15 @@ export class AuthService {
     this.http.get<UserDetail>(`${this.apiUrl}account/detail`)
 
   getUserDetail = () => {
-    const token = this.getToken();
+    const token =  this.getToken();
     if (!token) return null;
     const decodedToken: any = jwtDecode(token);
     const userDetail = {
       id: decodedToken.nameid,
       fullName: decodedToken.name,
       email: decodedToken.email,
-      roles: decodedToken.role || [],
     };
+
 
     return userDetail;
   };

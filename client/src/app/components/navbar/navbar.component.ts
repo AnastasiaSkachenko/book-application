@@ -22,7 +22,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     CommonModule,
   ],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'], // Fixed styleUrl to styleUrls
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
   authService = inject(AuthService);
@@ -32,7 +32,10 @@ export class NavbarComponent {
 
   isSmallScreen: boolean = false;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) {
+
+  }
+
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -42,7 +45,11 @@ export class NavbarComponent {
       });
 
     this.userDetail = this.authService.getUserDetail();
+
+
   }
+
+
 
   isLoggedIn() {
     return this.authService.isLoggedIn();

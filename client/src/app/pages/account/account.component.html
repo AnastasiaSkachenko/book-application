@@ -4,9 +4,9 @@
     <div *ngIf="accountDetail$ | async as user">
       <div class="text-center">
         <!-- User's Initial -->
-        <div class="rounded-circle bg-primary text-white mb-4 d-inline-flex justify-content-center align-items-center"
-             style="width: 5rem; height: 5rem; font-size: 2rem;">
-          {{ user.fullName[0] | uppercase }}
+        <div class="rounded-circle border bg-white  mb-4 d-inline-flex justify-content-center align-items-center"
+            style="width: 5rem; height: 5rem; font-size: 2rem; ">
+            <i class="fas fa-user" style="color: #3f51b5;"></i>
         </div>
         <hr class="mb-4">
         <!-- Account Details -->
