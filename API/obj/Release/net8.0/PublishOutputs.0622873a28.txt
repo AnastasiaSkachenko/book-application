@@ -1,6 +1,12 @@
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/API
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/publish/web.config
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/appsettings.Development.json
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/appsettings.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/appsettings.Production.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/publish/API.deps.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/publish/API.runtimeconfig.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/publish/appsettings.Development.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/publish/appsettings.json
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/API.dll
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/API.runtimeconfig.json
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/publish/API.pdb

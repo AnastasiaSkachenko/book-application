@@ -140,3 +140,9 @@
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/obj/Release/net8.0/API.pdb
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/obj/Release/net8.0/API.genruntimeconfig.cache
 /Users/anastasiiaskachenko/Desktop/book-application/book-application/API/obj/Release/net8.0/ref/API.dll
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/bin/Release/net8.0/publish/web.config
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/bin/Release/net8.0/appsettings.Production.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/bin/Release/net8.0/publish/API.deps.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/bin/Release/net8.0/publish/API.runtimeconfig.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/bin/Release/net8.0/publish/appsettings.Development.json
+/Users/anastasiiaskachenko/Desktop/book-application/book-application/API/bin/Release/net8.0/publish/appsettings.json
